@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": [
+      "es2015"
+    ],
+    "target": "es5",
+    "allowUnreachableCode": false,
+    "alwaysStrict": true,
+    "declaration": true,
+    "outDir": "./build",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/**/*.test.ts"
+  ]
+}
