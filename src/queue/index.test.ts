@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Queue from './queue';
+import Queue from '.';
 
 describe('Queue', function() {
   let queue: Queue;

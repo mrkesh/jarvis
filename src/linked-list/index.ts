@@ -47,8 +47,11 @@ export default class LinkedList<T = number> {
     const previousHead = this.head;
     this.head = temp;
     this.head.next = previousHead;
+
     if (previousHead) {
       previousHead.previous = this.head;
+    } else {
+      this.tail = this.head;
     }
     this.length++;
   }
@@ -95,6 +98,20 @@ export default class LinkedList<T = number> {
       }
       this.length--;
     }
+  }
+
+  /**
+   * Gets the head of the list (or undefined if it does not exist)
+   */
+  peek(): T | null {
+    return this.head?.val || null;
+  }
+
+  /**
+   * Gets the tail of the list (or undefined if it does not exist)
+   */
+  peekLast(): T | null {
+    return this.tail?.val || null;
   }
 
   /**

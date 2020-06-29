@@ -1,12 +1,12 @@
 # dependencies
-node_modules
+node_modules/
 
 # production
-/build
+build/
 
 # misc
 .idea
-.vscode
+.vscode/
 *.iml
 .DS_Store
 .Trashes

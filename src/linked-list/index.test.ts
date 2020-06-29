@@ -1,7 +1,7 @@
 import chai from 'chai';
-import LinkedList from './linked-list';
+import LinkedList from '.';
 
-describe.only('LinkedList', function() {
+describe('LinkedList', function() {
   let list: LinkedList;
 
   beforeEach(function() {
@@ -28,6 +28,15 @@ describe.only('LinkedList', function() {
 
       chai.assert.strictEqual(list.size(), 3);
       chai.assert.deepEqual(list.toArray(), [3, 2, 1]);
+    });
+
+    it('should check that head and tail are correct after adding items to the start of the list', function() {
+      list.addFirst(1);
+      list.addFirst(2);
+      list.addFirst(3);
+
+      chai.assert.strictEqual(list.peek(), 3);
+      chai.assert.strictEqual(list.peekLast(), 1);
     });
   });
 
