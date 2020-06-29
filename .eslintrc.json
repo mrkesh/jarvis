@@ -15,6 +15,12 @@
       "error",
       2
     ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1
+      }
+    ],
     "no-duplicate-imports": "error",
     "no-trailing-spaces": "error",
     "no-var": "error",

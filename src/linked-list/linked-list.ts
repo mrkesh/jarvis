@@ -1,6 +1,7 @@
 import LinkedListNode from './linked-list-node';
 
 export default class LinkedList<T = number> {
+
   private head: LinkedListNode<T> | null;
 
   private tail: LinkedListNode<T> | null;
@@ -8,7 +9,7 @@ export default class LinkedList<T = number> {
   private length: number;
 
   /**
-   * Implemention of linked list
+   * Implemention of a doubly linked list
    */
   constructor() {
     this.tail = this.head = null;
@@ -16,7 +17,7 @@ export default class LinkedList<T = number> {
   }
 
   /**
-   * Adds and element to the end of the list
+   * Adds an element to the end of the list
    */
   add(element: T): void {
     const temp = new LinkedListNode(element);
@@ -33,7 +34,23 @@ export default class LinkedList<T = number> {
 
     const previousTail = this.tail;
     this.tail = temp;
+    this.tail.previous = previousTail;
     previousTail.next = this.tail;
+  }
+
+  /**
+   * Add element to the beginning of the list
+   */
+  addFirst(element: T): void {
+
+    const temp = new LinkedListNode(element);
+    const previousHead = this.head;
+    this.head = temp;
+    this.head.next = previousHead;
+    if (previousHead) {
+      previousHead.previous = this.head;
+    }
+    this.length++;
   }
 
   /**
@@ -59,6 +76,24 @@ export default class LinkedList<T = number> {
       }
       previous = pointer;
       pointer = pointer.next;
+    }
+  }
+
+  /**
+   * Removes first element of the list
+   */
+  removeFirst(): void {
+
+    if (this.head) {
+
+      if (this.head.next) {
+        this.head = this.head.next;
+        this.head.previous = null;
+
+      } else {
+        this.head = this.tail = null;
+      }
+      this.length--;
     }
   }
 

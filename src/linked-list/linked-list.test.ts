@@ -1,7 +1,7 @@
 import chai from 'chai';
 import LinkedList from './linked-list';
 
-describe('LinkedList', function() {
+describe.only('LinkedList', function() {
   let list: LinkedList;
 
   beforeEach(function() {
@@ -9,11 +9,25 @@ describe('LinkedList', function() {
   });
 
   describe('add', function() {
-    it('enqueue elements', function() {
+    it('should add elements to the end of the list', function() {
       list.add(1);
       list.add(2);
+      list.add(3);
 
-      chai.assert.strictEqual(list.size(), 2);
+      chai.assert.strictEqual(list.size(), 3);
+      chai.assert.deepEqual(list.toArray(), [1, 2, 3]);
+
+    });
+  });
+
+  describe('addFirst', function() {
+    it('should add elements in the proper order', function() {
+      list.addFirst(1);
+      list.addFirst(2);
+      list.addFirst(3);
+
+      chai.assert.strictEqual(list.size(), 3);
+      chai.assert.deepEqual(list.toArray(), [3, 2, 1]);
     });
   });
 
@@ -39,6 +53,32 @@ describe('LinkedList', function() {
 
       // assert
       chai.assert.strictEqual(list.size(), 1);
+    });
+  });
+
+  describe('removeFirst', function() {
+    it('should check that removing first element from empty list does nothing', function() {
+      // act
+      list.removeFirst();
+
+      // assert
+      chai.assert.strictEqual(list.size(), 0);
+    });
+
+    it('should check that it removes the first element from the list', function() {
+      // arrange
+      list.add(1);
+      list.add(2);
+
+      // assert
+      chai.assert.strictEqual(list.size(), 2);
+
+      // act
+      list.removeFirst();
+
+      // assert
+      chai.assert.strictEqual(list.size(), 1);
+      chai.assert.deepEqual(list.toArray(), [2]);
     });
   });
 
